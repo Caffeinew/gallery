@@ -14,14 +14,14 @@ export default function card({ data }) {
         <h1 className=" my-3 text-gray-800 text-2xl ">{user}</h1>
       </div>
       <div className="w-full px-8 pb-8 text-gray-700">
-        <span className="flex my-2">
-          <EyeIcon className="w-4 mr-2" /> Просмотры: {views}
+        <span className="flex my-2 items-center">
+          <EyeIcon className="w-4 h-4 mr-2" /> Просмотры: {views}
         </span>
-        <span className="flex my-2">
-          <DownloadIcon className="w-4 mr-2" /> Загрузки: {downloads}
+        <span className="flex my-2 items-center">
+          <DownloadIcon className="w-4 h-4 mr-2" /> Загрузки: {downloads}
         </span>
-        <span className="flex my-2">
-          <ThumbUpIcon className="w-4 mr-2" /> Лайки: {likes}
+        <span className="flex my-2 items-center">
+          <ThumbUpIcon className="w-4 h-4 mr-2" /> Лайки: {likes}
         </span>
       </div>
     </>

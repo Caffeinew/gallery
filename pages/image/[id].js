@@ -25,7 +25,7 @@ export default function Image({ data }) {
       <div className="absolute m-8 sm:m-16 xl:m-0 xl:inset-16 shadow-xl flex flex-col xl:flex-row items-center justify-center showcase">
         <Link href="/">
           <a className="absolute flex p-2 md:p-3 xl:p-4 bg-white shadow -top-4 xl:top-auto -left-4 xl:-left-8">
-            <ChevronLeftIcon className="w-8" />
+            <ChevronLeftIcon className="w-8 h-8" />
           </a>
         </Link>
         <img
@@ -43,14 +43,14 @@ export default function Image({ data }) {
             </h1>
           </div>
           <div className="text-gray-700 text-md sm:text-lg md:text-xl xl:mt-4">
-            <span className="flex my-2">
-              <EyeIcon className="w-4 md:w-5 mr-3" /> Просмотры: {views}
+            <span className="flex my-2 items-center">
+              <EyeIcon className="w-4 h-4 md:h-5 md:w-5 mr-3" /> Просмотры: {views}
             </span>
-            <span className="flex my-2">
-              <DownloadIcon className="w-4 md:w-5 mr-3" /> Загрузки: {downloads}
+            <span className="flex my-2 items-center">
+              <DownloadIcon className="w-4 h-4 md:h-5 md:w-5 mr-3" /> Загрузки: {downloads}
             </span>
-            <span className="flex my-2">
-              <ThumbUpIcon className="w-4 md:w-5 mr-3" /> Лайки: {likes}
+            <span className="flex my-2 items-center">
+              <ThumbUpIcon className="w-4 h-4 md:h-5 md:w-5 mr-3" /> Лайки: {likes}
             </span>
           </div>
           <div className="flex flex-wrap justify-center mt-8 w-full select-none">

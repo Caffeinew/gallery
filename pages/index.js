@@ -65,7 +65,7 @@ export default function index() {
       <Head>
         <title>Caffeine gallery</title>
       </Head>
-      <ViewGridIcon className="w-16 text-blue-400 relative my-6 mx-auto sm:m-12 " />
+      <ViewGridIcon className="w-16 h-16 text-blue-400 relative my-6 mx-auto sm:m-12 " />
       <Search
         SearchText={(text) => {
           if (text != term) {
@@ -108,7 +108,7 @@ export default function index() {
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex justify-center fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 bg-blue-400 py-1 sm:p-4 scroll-top sm:rounded-xl cursor-pointer"
         >
-          <ChevronUpIcon className="w-4 sm:w-8 text-white" />
+          <ChevronUpIcon className="w-4 h-4 sm:h-8 sm:w-8 text-white" />
         </div>
       )}
     </>
