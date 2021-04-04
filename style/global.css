@@ -1,12 +1,31 @@
 @media only screen and (min-width: 1280px) {
-    .card, .profile {
-        transition: .3s;
+    .card {
+        transition: transform .3s;
+        user-select: none;
     }
     .card:hover {
         transform: scale(1.1);
         cursor: pointer;
     }
-    .card:hover .profile {
-        transform: scale(1.1);
+    .card img {
+        animation: appear .5s;
     }
+    .showcase {
+        width: 90%;
+        height: 90%;
+        animation: appear .3s;
+    }
+}
+
+@keyframes appear {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+body {
+    min-height: 101vh;
 }

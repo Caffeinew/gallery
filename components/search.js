@@ -5,7 +5,7 @@ export default function search({ SearchText }) {
   const [text, setText] = useState("");
   const submit = (event) => {
     event.preventDefault();
-    SearchText(text);
+    SearchText(text.replace(" ", "+"));
   };
   return (
     <form
@@ -19,7 +19,7 @@ export default function search({ SearchText }) {
       />
       <button
         type="submit"
-        className="flex items-center justify-center sm:justify-start w-full sm:w-auto bg-blue-400 text-gray-100 py-2 pl-3 pr-5 rounded-xl ml-0 sm:ml-4 focus:outline-none focus:bg-blue-500"
+        className="flex items-center justify-center sm:justify-start w-full sm:w-auto bg-blue-400 text-gray-100 py-2 pl-3 pr-5 rounded ml-0 sm:ml-4 focus:outline-none focus:bg-blue-500"
       >
         <SearchIcon className="w-5 mr-1" />
         Поиск
