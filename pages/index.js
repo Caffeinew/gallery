@@ -1,7 +1,7 @@
 import Card from "../components/card";
 import Search from "../components/search";
 import DummyCards from "../components/dummyCards";
-import Head from 'next/head'
+import Head from "next/head";
 import {
   ViewGridIcon,
   EmojiSadIcon,
@@ -30,7 +30,6 @@ export default function index() {
       document.querySelector("input").offsetTop;
 
     window.onscroll = function () {
-
       if (window.pageYOffset > offset) {
         setScrollBtn(true);
       } else {
@@ -60,9 +59,9 @@ export default function index() {
   }, [term, page]);
   return (
     <>
-    <Head>
-      <title>Caffeine gallery</title>
-    </Head>
+      <Head>
+        <title>Caffeine gallery</title>
+      </Head>
       <ViewGridIcon className="w-16 text-blue-400 relative my-6 mx-auto sm:m-12 " />
       <Search
         SearchText={(text) => {
@@ -88,11 +87,11 @@ export default function index() {
         </h1>
       )}
       {scrollBtn && (
-        <div 
+        <div
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex justify-center fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 bg-blue-400 py-1 sm:p-4 scroll-top sm:rounded-xl cursor-pointe"
         >
-          <ChevronUpIcon className="w-4 sm:w-8  text-whiter" />
+          <ChevronUpIcon className="w-4 sm:w-8 text-white" />
         </div>
       )}
     </>
