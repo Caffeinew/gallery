@@ -8,12 +8,14 @@ import Link from "next/link";
 import {
   ViewGridIcon,
   EmojiSadIcon,
-  ChevronUpIcon,
+  ChevronDoubleUpIcon,
 } from "@heroicons/react/outline";
 import { useEffect } from "react";
 import Nprogress from "nprogress";
 import "nprogress/nprogress.css";
-
+import smoothscroll from 'smoothscroll-polyfill';
+ 
+smoothscroll.polyfill();
 Nprogress.configure({ showSpinner: false, rickleSpeed: 50 });
 
 export default function index() {
@@ -82,7 +84,7 @@ export default function index() {
         }}
       />
       {showAlert && <Alert text="Запрос уже выполнен" />}
-      <div className="p-8 sm:p-4 mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16">
+      <div className="p-8 sm:p-4 sm:pb-8 mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16">
         {isLoading ? (
           <DummyCards array={dummy} />
         ) : (
@@ -106,9 +108,9 @@ export default function index() {
       {scrollBtn && (
         <div
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex justify-center fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 bg-blue-400 py-1 sm:p-4 scroll-top sm:rounded-xl cursor-pointer"
+          className="flex justify-center fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 bg-blue-400 py-2 sm:p-4 scroll-top sm:rounded-xl cursor-pointer"
         >
-          <ChevronUpIcon className="w-4 h-4 sm:h-8 sm:w-8 text-white" />
+          <ChevronDoubleUpIcon className="h-5 w-5 text-white" />
         </div>
       )}
     </>
