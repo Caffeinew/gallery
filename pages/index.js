@@ -1,6 +1,7 @@
 import Card from "../components/card";
 import Search from "../components/search";
 import DummyCards from "../components/dummyCards";
+import Head from 'next/head'
 import {
   ViewGridIcon,
   EmojiSadIcon,
@@ -59,6 +60,9 @@ export default function index() {
   }, [term, page]);
   return (
     <>
+    <Head>
+      <title>Caffeine gallery</title>
+    </Head>
       <ViewGridIcon className="w-16 text-blue-400 relative my-6 mx-auto sm:m-12 " />
       <Search
         SearchText={(text) => {
