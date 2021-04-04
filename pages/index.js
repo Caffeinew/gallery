@@ -88,11 +88,11 @@ export default function index() {
         </h1>
       )}
       {scrollBtn && (
-        <div className="flex justify-center fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 bg-blue-400 py-1 sm:p-4 scroll-top sm:rounded-xl">
-          <ChevronUpIcon
-            className="w-4 sm:w-8  text-white cursor-pointer"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          />
+        <div 
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="flex justify-center fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 bg-blue-400 py-1 sm:p-4 scroll-top sm:rounded-xl"
+        >
+          <ChevronUpIcon className="w-4 sm:w-8  text-white cursor-pointer" />
         </div>
       )}
     </>
