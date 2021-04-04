@@ -1,3 +1,6 @@
+.scroll-top {
+    animation: scrollBtn .5s;
+}
 @media only screen and (min-width: 1280px) {
     .card {
         transition: transform .3s;
@@ -7,16 +10,19 @@
         transform: scale(1.1);
         cursor: pointer;
     }
-    .card img {
+    .card img, .scroll-top {
         animation: appear .5s;
-    }
-    .showcase {
-        width: 90%;
-        height: 90%;
-        animation: appear .3s;
     }
 }
 
+@keyframes scrollBtn {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 @keyframes appear {
     0% {
         transform: scale(0);
@@ -28,4 +34,7 @@
 
 body {
     min-height: 101vh;
+}
+#nprogress .bar {
+    height: 3px!important;
 }

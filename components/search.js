@@ -5,7 +5,7 @@ export default function search({ SearchText }) {
   const [text, setText] = useState("");
   const submit = (event) => {
     event.preventDefault();
-    SearchText(text.replace(" ", "+"));
+    SearchText(encodeURIComponent(text));
   };
   return (
     <form
