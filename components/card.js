@@ -4,14 +4,11 @@ export default function card({ data }) {
   const { webformatURL, views, downloads, likes, user, userImageURL } = data;
 
   return (
-    <div className="w-auto shadow-lg card flex flex-col">
+    <>
       <img src={webformatURL} className="h-64 w-full object-cover" />
       <div className="flex px-8 pt-8 items-center relative">
         <img
-          src={
-            userImageURL ||
-            "https://flaticon.com/svg/vstatic/svg/599/599305.svg?token=exp=1617477733~hmac=103005c08d00f1d2095ca9a7ae1dc269"
-          }
+          src={userImageURL || "/profile.svg"}
           className="shadow w-24 rounded-full object-cover absolute -top-12 right-4 border-4 border-gray-200 bg-gray-100"
         />
         <h1 className=" my-3 text-gray-800 text-2xl ">{user}</h1>
@@ -27,6 +24,6 @@ export default function card({ data }) {
           <ThumbUpIcon className="w-4 mr-2" /> Лайки: {likes}
         </span>
       </div>
-    </div>
+    </>
   );
 }

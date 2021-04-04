@@ -1,13 +1,16 @@
+import { useState } from "react";
 import Card from "../components/card";
 import Search from "../components/search";
 import DummyCards from "../components/dummyCards";
+import Alert from "../components/alert";
 import Head from "next/head";
+import Link from "next/link";
 import {
   ViewGridIcon,
   EmojiSadIcon,
   ChevronUpIcon,
 } from "@heroicons/react/outline";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Nprogress from "nprogress";
 import "nprogress/nprogress.css";
 
@@ -21,10 +24,10 @@ export default function index() {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(25);
   const [scrollBtn, setScrollBtn] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     isLoading ? Nprogress.start() : Nprogress.done();
-    let prevOffset = 0;
     const offset =
       document.querySelector("input").offsetHeight +
       document.querySelector("input").offsetTop;
@@ -65,17 +68,31 @@ export default function index() {
       <ViewGridIcon className="w-16 text-blue-400 relative my-6 mx-auto sm:m-12 " />
       <Search
         SearchText={(text) => {
-          setIsLoading(true);
-          setImages([]);
-          setTerm(text);
-          setPage(1);
+          if (text != term) {
+            setIsLoading(true);
+            setImages([]);
+            setTerm(text);
+            setPage(1);
+          } else {
+            setShowAlert(true);
+            setTimeout(() => {
+              setShowAlert(false);
+            }, 3100);
+          }
         }}
       />
+      {showAlert && <Alert text="Запрос уже выполнен" />}
       <div className="p-8 sm:p-4 mx-auto container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-16">
         {isLoading ? (
           <DummyCards array={dummy} />
         ) : (
-          images.map((obj, index) => <Card data={obj} key={index} />)
+          images.map((obj, index) => (
+            <Link href={"/image/" + obj.id} key={index}>
+              <a className="w-auto shadow-lg card flex flex-col">
+                <Card data={obj} />
+              </a>
+            </Link>
+          ))
         )}
       </div>
       {!isLoading && !images[0] && (
@@ -89,7 +106,7 @@ export default function index() {
       {scrollBtn && (
         <div
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="flex justify-center fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 bg-blue-400 py-1 sm:p-4 scroll-top sm:rounded-xl cursor-pointe"
+          className="flex justify-center fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 bg-blue-400 py-1 sm:p-4 scroll-top sm:rounded-xl cursor-pointer"
         >
           <ChevronUpIcon className="w-4 sm:w-8 text-white" />
         </div>
