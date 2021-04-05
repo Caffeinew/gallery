@@ -14,8 +14,7 @@ import { useEffect } from "react";
 import Nprogress from "nprogress";
 import "nprogress/nprogress.css";
 import smoothscroll from 'smoothscroll-polyfill';
- 
-smoothscroll.polyfill();
+
 Nprogress.configure({ showSpinner: false, rickleSpeed: 50 });
 
 export default function index() {
@@ -29,6 +28,7 @@ export default function index() {
   const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
+    smoothscroll.polyfill();
     isLoading ? Nprogress.start() : Nprogress.done();
     const offset =
       document.querySelector("input").offsetHeight +
