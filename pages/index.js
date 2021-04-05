@@ -24,6 +24,10 @@ export default function index() {
   const [showAlert, setShowAlert] = useState(false);
   const [currentScroll, setCurrentScroll] = useState(0);
 
+  function scrollHandler() {
+    setCurrentScroll(window.pageYOffset);
+  }
+
   useEffect(() => {
     smoothscroll.polyfill();
   }, []);
@@ -33,7 +37,9 @@ export default function index() {
   }, [isLoading]);
 
   useEffect(() => {
-    window.onscroll = () => setCurrentScroll(window.pageYOffset);
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => window.removeEventListener("scroll", scrollHandler);
   });
 
   useEffect(() => {
@@ -82,7 +88,7 @@ export default function index() {
           <DummyCards array={dummy} />
         ) : (
           images.map((obj, index) => (
-            <Link href={"/image/" + obj.id} key={index}>
+            <Link href={"/image/" + obj.id} key={index+obj.user+obj.id}>
               <a className="w-auto shadow-lg card flex flex-col">
                 <Card data={obj} />
               </a>

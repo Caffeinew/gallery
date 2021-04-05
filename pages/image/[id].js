@@ -44,13 +44,16 @@ export default function Image({ data }) {
           </div>
           <div className="text-gray-700 text-md sm:text-lg md:text-xl xl:mt-4">
             <span className="flex my-2 items-center">
-              <EyeIcon className="w-4 h-4 md:h-5 md:w-5 mr-3" /> Просмотры: {views}
+              <EyeIcon className="w-4 h-4 md:h-5 md:w-5 mr-3" /> Просмотры:{" "}
+              {views}
             </span>
             <span className="flex my-2 items-center">
-              <DownloadIcon className="w-4 h-4 md:h-5 md:w-5 mr-3" /> Загрузки: {downloads}
+              <DownloadIcon className="w-4 h-4 md:h-5 md:w-5 mr-3" /> Загрузки:{" "}
+              {downloads}
             </span>
             <span className="flex my-2 items-center">
-              <ThumbUpIcon className="w-4 h-4 md:h-5 md:w-5 mr-3" /> Лайки: {likes}
+              <ThumbUpIcon className="w-4 h-4 md:h-5 md:w-5 mr-3" /> Лайки:{" "}
+              {likes}
             </span>
           </div>
           <div className="flex flex-wrap justify-center mt-8 w-full select-none">
