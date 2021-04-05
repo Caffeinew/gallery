@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Card from "../components/card";
 import Search from "../components/search";
 import DummyCards from "../components/dummyCards";
@@ -10,12 +9,9 @@ import {
   EmojiSadIcon,
   ChevronDoubleUpIcon,
 } from "@heroicons/react/outline";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Nprogress from "nprogress";
-import "nprogress/nprogress.css";
-import smoothscroll from 'smoothscroll-polyfill';
-
-Nprogress.configure({ showSpinner: false, rickleSpeed: 50 });
+import smoothscroll from "smoothscroll-polyfill";
 
 export default function index() {
   const dummy = new Array(20).fill(0);
@@ -26,30 +22,27 @@ export default function index() {
   const [total, setTotal] = useState(25);
   const [scrollBtn, setScrollBtn] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const [currentScroll, setCurrentScroll] = useState(0);
 
   useEffect(() => {
     smoothscroll.polyfill();
-    isLoading ? Nprogress.start() : Nprogress.done();
-    const offset =
-      document.querySelector("input").offsetHeight +
-      document.querySelector("input").offsetTop;
+  }, []);
 
-    window.onscroll = function () {
-      if (window.pageYOffset > offset) {
-        setScrollBtn(true);
-      } else {
-        setScrollBtn(false);
-      }
-      if (
-        window.innerHeight + window.pageYOffset >=
-        document.body.offsetHeight
-      ) {
-        if (page < total) {
-          setPage(page + 1);
-        }
-      }
-    };
+  useEffect(() => {
+    isLoading ? Nprogress.start() : Nprogress.done();
+  }, [isLoading]);
+
+  useEffect(() => {
+    window.onscroll = () => setCurrentScroll(window.pageYOffset);
   });
+
+  useEffect(() => {
+    currentScroll > 250 ? setScrollBtn(true) : setScrollBtn(false);
+    window.innerHeight + currentScroll >= document.body.offsetHeight &&
+      page < total &&
+      setPage(page + 1);
+  }, [currentScroll]);
+
   useEffect(() => {
     fetch(
       `https://pixabay.com/api/?key=20990566-a736427b048592d450fe30b92&q=${term}&image_type=photo&page=${page}`
