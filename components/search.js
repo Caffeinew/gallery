@@ -1,19 +1,19 @@
 import { SearchIcon } from "@heroicons/react/solid";
-import { useState } from "react";
 
-export default function search({ SearchText }) {
-  const [text, setText] = useState("");
-  const submit = (event) => {
-    event.preventDefault();
-    SearchText(encodeURIComponent(text));
-  };
+export default function search({ search, updateSearch, Update }) {
+  function submit(event) {
+    event.preventDefault()
+    Update(encodeURIComponent(search))
+  }
   return (
     <form
       onSubmit={submit}
       className="py-4 my-6 sm:my-12 w-3/4 sm:w-full mx-auto sm:mx-0 flex justify-center items-center flex-col sm:flex-row"
     >
       <input
-        onChange={(event) => setText(event.target.value)}
+        value={search}
+        onChange={(event) => updateSearch(event.target.value)}
+        onFocus={() => updateSearch('')}
         type="text"
         className="py-1 px-2 rounded-xl border w-full sm:w-96 focus:outline-none focus:border-blue-300 mb-4 sm:mb-0"
       />

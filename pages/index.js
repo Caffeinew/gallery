@@ -9,23 +9,37 @@ import {
   EmojiSadIcon,
   ChevronDoubleUpIcon,
 } from "@heroicons/react/outline";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Nprogress from "nprogress";
 import smoothscroll from "smoothscroll-polyfill";
+import { Context } from "./_app";
 
 export default function index() {
   const dummy = new Array(20).fill(0);
-  const [images, setImages] = useState([]);
+  const [{ page, terms, images, search, scroll }, setContext] = useContext(
+    Context
+  );
   const [isLoading, setIsLoading] = useState(true);
-  const [term, setTerm] = useState("");
-  const [page, setPage] = useState(1);
   const [total, setTotal] = useState(25);
   const [scrollBtn, setScrollBtn] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
-  const [currentScroll, setCurrentScroll] = useState(0);
 
-  function scrollHandler() {
-    setCurrentScroll(window.pageYOffset);
+  function updatePage(query) {
+    setContext((prev) => ({ ...prev, page: query }));
+  }
+  function updateTerms(query) {
+    setContext((prev) => ({ ...prev, terms: query }));
+  }
+  function updateImages(query) {
+    setContext((prev) => ({ ...prev, images: query }));
+  }
+  function updateSearch(query) {
+    setContext((prev) => ({ ...prev, search: query }));
+  }
+  function updateScroll() {
+    if (window.pageYOffset !== 0) {
+      setContext((prev) => ({ ...prev, scroll: window.pageYOffset }));
+    }
   }
 
   useEffect(() => {
@@ -33,34 +47,39 @@ export default function index() {
   }, []);
 
   useEffect(() => {
-    isLoading ? Nprogress.start() : Nprogress.done();
+    if (isLoading) {
+      Nprogress.start();
+    } else {
+      Nprogress.done();
+      window.scroll(0, scroll);
+    }
   }, [isLoading]);
 
   useEffect(() => {
-    window.addEventListener("scroll", scrollHandler);
+    window.addEventListener("scroll", updateScroll);
 
-    return () => window.removeEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", updateScroll);
   });
 
   useEffect(() => {
-    currentScroll > 250 ? setScrollBtn(true) : setScrollBtn(false);
-    window.innerHeight + currentScroll >= document.body.offsetHeight &&
+    scroll > 250 ? setScrollBtn(true) : setScrollBtn(false);
+    window.innerHeight + scroll >= document.body.offsetHeight &&
       page < total &&
-      setPage(page + 1);
-  }, [currentScroll]);
+      updatePage(page + 1);
+  }, [scroll]);
 
   useEffect(() => {
     fetch(
-      `https://pixabay.com/api/?key=20990566-a736427b048592d450fe30b92&q=${term}&image_type=photo&page=${page}`
+      `https://pixabay.com/api/?key=20990566-a736427b048592d450fe30b92&q=${terms}&image_type=photo&page=${page}`
     )
       .then((res) => res.json())
       .then((data) => {
-        setImages(images.concat(data.hits));
+        updateImages(images.concat(data.hits));
         setIsLoading(false);
         setTotal(Math.ceil(data.totalHits / 20));
       })
       .catch((error) => console.log(error));
-  }, [term, page]);
+  }, [terms, page]);
   return (
     <>
       <Head>
@@ -68,12 +87,14 @@ export default function index() {
       </Head>
       <ViewGridIcon className="w-16 h-16 text-blue-400 relative my-6 mx-auto sm:m-12 " />
       <Search
-        SearchText={(text) => {
-          if (text != term) {
+        search={search}
+        updateSearch={updateSearch}
+        Update={(text) => {
+          if (text != terms) {
             setIsLoading(true);
-            setImages([]);
-            setTerm(text);
-            setPage(1);
+            updateImages([]);
+            updateTerms(text);
+            updatePage(1);
           } else {
             setShowAlert(true);
             setTimeout(() => {
@@ -88,7 +109,7 @@ export default function index() {
           <DummyCards array={dummy} />
         ) : (
           images.map((obj, index) => (
-            <Link href={"/image/" + obj.id} key={index+obj.user+obj.id}>
+            <Link href={"/image/" + obj.id} key={index + obj.user + obj.id}>
               <a className="w-auto shadow-lg card flex flex-col">
                 <Card data={obj} />
               </a>
