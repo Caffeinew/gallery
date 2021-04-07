@@ -9,7 +9,7 @@ export default function card({ data }) {
       <div className="flex px-8 pt-8 items-center relative">
         <img
           src={userImageURL || "/profile.svg"}
-          className="shadow w-24 rounded-full object-cover absolute -top-12 right-4 border-4 border-gray-200 bg-gray-100"
+          className="shadow w-24 h-24 rounded-full object-cover absolute -top-12 right-4 border-4 border-gray-200 bg-gray-100"
         />
         <h1 className=" my-3 text-gray-800 text-2xl ">{user}</h1>
       </div>
