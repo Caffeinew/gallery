@@ -6,8 +6,17 @@ import {
   DownloadIcon,
   ChevronLeftIcon,
 } from "@heroicons/react/solid";
+import { useContext } from "react";
+import { Context } from "../_app";
 
-export default function Image({ data }) {
+export default function Image({ data, id }) {
+  const [{ images }] = useContext(Context);
+  let image;
+  if (images[0]) {
+    image = images[id];
+  } else {
+    image = data;
+  }
   const {
     largeImageURL,
     views,
@@ -16,7 +25,7 @@ export default function Image({ data }) {
     user,
     userImageURL,
     tags,
-  } = data;
+  } = image;
   return (
     <>
       <Head>
@@ -70,10 +79,11 @@ export default function Image({ data }) {
 }
 
 export async function getServerSideProps({ params }) {
+  const arr = params.id.split("-");
   const result = await fetch(
     "https://pixabay.com/api/?key=20990566-a736427b048592d450fe30b92&id=" +
-      params.id
+      arr[1]
   );
   const data = await result.json();
-  return { props: { data: data.hits[0] } };
+  return { props: { data: data.hits[0], id: arr[0] } };
 }

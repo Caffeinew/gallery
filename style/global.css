@@ -1,6 +1,3 @@
-.scroll-top {
-  animation: scrollBtn 0.5s;
-}
 .showcase img {
   min-width: 70%;
 }
@@ -13,46 +10,11 @@
     transform: scale(1.1);
     cursor: pointer;
   }
-  .card img,
-  .scroll-top,
-  .showcase img {
-    animation: appear 0.3s;
-  }
 }
-.alert {
-  transform: translateX(110%);
-  animation: alert 3s;
-}
-@keyframes alert {
-  0% {
-    transform: translateX(110%);
-  }
-  15% {
-    transform: translateX(0);
-  }
-  85% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(110%);
-  }
-}
-@keyframes scrollBtn {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-@keyframes appear {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
+
 #nprogress .bar {
   height: 3px !important;
+}
+body {
+  overflow-x: hidden;
 }

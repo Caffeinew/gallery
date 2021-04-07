@@ -19,11 +19,11 @@ export default function app({ Component, pageProps }) {
     terms: "",
     images: [],
     search: "",
-    scroll: 0
+    scroll: 0,
   });
   return (
     <Context.Provider value={[context, setContext]}>
-      <Component {...pageProps} />;
+        <Component {...pageProps} />;
     </Context.Provider>
   );
 }
