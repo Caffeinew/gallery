@@ -23,7 +23,7 @@ export default function app({ Component, pageProps }) {
   });
   return (
     <Context.Provider value={[context, setContext]}>
-        <Component {...pageProps} />;
+        <Component {...pageProps}/>
     </Context.Provider>
   );
 }

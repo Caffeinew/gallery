@@ -86,6 +86,7 @@ export default function index() {
       <Head>
         <title>Caffeine gallery</title>
       </Head>
+
       <ViewGridIcon className="w-16 h-16 text-blue-400 relative my-6 mx-auto sm:m-12 " />
       <Search
         search={search}
@@ -112,7 +113,7 @@ export default function index() {
           <DummyCards array={dummy} />
         ) : (
           images.map((obj, index) => (
-            <Link href={`/image/${index}-${obj.id}`} key={index + obj.user + obj.id}>
+            <Link href={`/image/${obj.id}`} key={index + obj.user + obj.id}>
               <a className="w-auto shadow-lg card flex flex-col">
                 <Card data={obj} />
               </a>

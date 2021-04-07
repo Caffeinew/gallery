@@ -19,7 +19,7 @@ export default function search({ search, updateSearch, Update }) {
         className="py-1 px-2 rounded-xl border w-full sm:w-96 focus:outline-none focus:border-blue-300 mb-4 sm:mb-0"
       />
       <motion.button
-      whileTap={{scale: 1.1}}
+        whileTap={{ scale: 1.1 }}
         type="submit"
         className="flex items-center justify-center sm:justify-start w-full sm:w-auto bg-blue-400 text-gray-100 py-2 pl-3 pr-5 rounded ml-0 sm:ml-4 focus:outline-none focus:bg-blue-500"
       >

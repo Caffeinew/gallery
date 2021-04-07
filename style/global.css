@@ -1,14 +1,16 @@
-.showcase img {
+.largeImg {
   min-width: 70%;
+  min-height: 30vh;
 }
 @media only screen and (min-width: 1280px) {
   .card {
     transition: transform 0.3s;
+    cursor: pointer;
     user-select: none;
   }
   .card:hover {
     transform: scale(1.1);
-    cursor: pointer;
+    
   }
 }
 
