@@ -95,7 +95,7 @@ export default function index() {
             updateImages([]);
             updateTerms(text);
             updatePage(1);
-          } else if(!setShowAlert){
+          } else if(!showAlert){
             setShowAlert(true);
             setTimeout(() => {
               setShowAlert(false);
