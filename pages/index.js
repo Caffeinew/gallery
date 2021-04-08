@@ -14,6 +14,7 @@ import { useEffect, useState, useContext } from "react";
 import Nprogress from "nprogress";
 import smoothscroll from "smoothscroll-polyfill";
 import { Context } from "./_app";
+import ThemeSwitch from "../components/themeSwitch";
 
 export default function index() {
   const dummy = new Array(20).fill(0);
@@ -87,7 +88,8 @@ export default function index() {
         <title>Caffeine gallery</title>
       </Head>
 
-      <ViewGridIcon className="w-16 h-16 text-blue-400 relative my-6 mx-auto sm:m-12 " />
+      <ViewGridIcon className="w-16 h-16 text-blue-400 dark:text-blue-600 relative my-6 mx-auto sm:m-12 " />
+      <ThemeSwitch/>
       <Search
         search={search}
         updateSearch={updateSearch}
@@ -114,7 +116,7 @@ export default function index() {
         ) : (
           images.map((obj, index) => (
             <Link href={`/image/${obj.id}`} key={index + obj.user + obj.id}>
-              <a className="w-auto shadow-lg card flex flex-col">
+              <a className="w-auto shadow-lg card flex flex-col dark:bg-gray-800">
                 <Card data={obj} />
               </a>
             </Link>
@@ -136,9 +138,9 @@ export default function index() {
             animate={{ y: 0 }}
             exit={{ y: 70 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex justify-center fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 bg-blue-400 py-2 sm:p-4 scroll-top sm:rounded-xl cursor-pointer"
+            className="flex justify-center fixed w-full bottom-0 right-0 sm:w-auto sm:bottom-4 sm:right-4 bg-blue-400 py-2 sm:p-4 scroll-top sm:rounded-xl cursor-pointer dark:bg-blue-600"
           >
-            <ChevronDoubleUpIcon className="h-5 w-5 text-white" />
+            <ChevronDoubleUpIcon className="h-5 w-5 text-gray-50" />
           </motion.div>
         )}
       </AnimatePresence>

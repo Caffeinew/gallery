@@ -25,7 +25,7 @@ export default function Image({ data }) {
         <title>Image Showcase | Caffeine Gallery</title>
       </Head>
       <motion.div
-        className="absolute m-8 sm:m-16 xl:m-0 xl:inset-16 shadow-xl flex flex-col xl:flex-row items-center justify-center"
+        className="absolute m-8 sm:m-16 xl:m-0 xl:inset-16 shadow-xl flex flex-col xl:flex-row items-center justify-center dark:bg-gray-800"
         initial="initial"
         animate="animate"
         variants={stagger}
@@ -38,7 +38,7 @@ export default function Image({ data }) {
               opacity: 1,
               transition: { duration: 0.3, delay: 0.5 },
             }}
-            className="cursor-pointer absolute flex p-2 md:p-3 xl:p-4 bg-white shadow -top-4 xl:top-auto -left-4 xl:-left-8"
+            className="cursor-pointer absolute flex p-2 md:p-3 xl:p-4 bg-gray-50 dark:bg-gray-800 dark:text-gray-300 shadow -top-4 xl:top-auto -left-4 xl:-left-8"
           >
             <ChevronLeftIcon className="w-8 h-8" />
           </motion.a>
@@ -51,14 +51,14 @@ export default function Image({ data }) {
           <motion.div variants={sliderBottom}>
             <img
               src={userImageURL || "/profile.svg"}
-              className="-mt-20 sm:-mt-24 md:mt-0 shadow w-24 sm:w-32 md:w-48 rounded-full object-cover border-4 border-gray-200 bg-gray-100 mx-auto"
+              className="-mt-20 sm:-mt-24 md:mt-0 shadow w-24 sm:w-32 md:w-48 rounded-full object-cover border-4 border-gray-200 dark:border-gray-500 bg-gray-100 mx-auto"
             />
-            <h1 className="my-4 text-gray-800 text-xl sm:text-2xl md:text-3xl text-center">
+            <h1 className="my-4 text-gray-800 dark:text-gray-100 text-xl sm:text-2xl md:text-3xl text-center">
               {user}
             </h1>
           </motion.div>
           <motion.div
-            className="text-gray-700 text-md sm:text-lg md:text-xl xl:mt-4"
+            className="text-gray-700 text-md sm:text-lg md:text-xl xl:mt-4 dark:text-gray-200"
             variants={sliderBottom}
           >
             <span className="flex my-2 items-center">
@@ -79,7 +79,7 @@ export default function Image({ data }) {
             variants={sliderBottom}
           >
             {tags.split(",").map((tag, index) => (
-              <div className="m-2 py-2 px-4 text-center shadow" key={index}>
+              <div className="m-2 py-2 px-4 text-center shadow dark:bg-gray-700 dark:text-gray-300" key={index}>
                 {tag}
               </div>
             ))}

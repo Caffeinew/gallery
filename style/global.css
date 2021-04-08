@@ -20,3 +20,32 @@
 body {
   overflow-x: hidden;
 }
+html {
+  background-color:#171717;
+}
+.slider {
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 50%;
+  background-color: #eee;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #0774af;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.slider:before {
+  border-radius: 50%;
+}
