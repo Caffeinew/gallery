@@ -89,7 +89,7 @@ export default function index() {
       </Head>
 
       <ViewGridIcon className="w-16 h-16 text-blue-400 dark:text-blue-600 relative my-6 mx-auto sm:m-12 " />
-      <ThemeSwitch/>
+      <ThemeSwitch />
       <Search
         search={search}
         updateSearch={updateSearch}

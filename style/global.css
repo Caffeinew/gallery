@@ -18,9 +18,9 @@
   height: 3px !important;
 }
 body {
-  overflow-x: hidden;
+  padding: 1px;
 }
-html {
+html.dark {
   background-color:#171717;
 }
 .slider {

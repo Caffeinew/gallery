@@ -23,9 +23,7 @@ export default function app({ Component, pageProps }) {
   });
   return (
     <Context.Provider value={[context, setContext]}>
-        <div className="w-full h-full bg-gray-50 dark:bg-gray-900 p-1 wrapper">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
     </Context.Provider>
   );
 }

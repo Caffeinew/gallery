@@ -1,7 +1,7 @@
 import { EyeIcon, ThumbUpIcon, DownloadIcon } from "@heroicons/react/solid";
 
 export default function card({ data }) {
-  const { webformatURL, views, downloads, likes, user, userImageURL } = data;
+  const { webformatURL, views, downloads, likes, user, userImageURL, id } = data;
 
   return (
     <>
@@ -10,7 +10,6 @@ export default function card({ data }) {
         <img
           src={userImageURL || "/profile.svg"}
           className="shadow w-24 h-24 rounded-full object-cover absolute -top-12 right-4 border-4 border-gray-200 dark:border-gray-400 bg-gray-100 dark:bg-gray-700"
-          className="shadow w-24 h-24 rounded-full object-cover absolute -top-12 right-4 border-4 border-gray-200 bg-gray-100"
         />
         <h1 className=" my-3 text-gray-800 text-2xl dark:text-gray-200">{user}</h1>
       </div>
