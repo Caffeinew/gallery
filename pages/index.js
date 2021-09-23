@@ -61,7 +61,7 @@ export default function index() {
     window.addEventListener("scroll", updateScroll);
 
     return () => window.removeEventListener("scroll", updateScroll);
-  });
+  }, []);
 
   useEffect(() => {
     scroll > 250 ? setScrollBtn(true) : setScrollBtn(false);
